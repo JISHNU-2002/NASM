@@ -1,0 +1,28 @@
+mov eax,3
+mov ebx,2
+mov ecx,%1
+mov edx,%2
+int 80h
+%endmacro
+
+section .text
+global _start:
+_start:
+
+print msg1,len1
+read num,2
+
+mov bl,[num]
+sub bl,'0'
+mov al,1
+
+label:
+mul bl
+dec bl
+jnz label
+
+add al,'0'
+mov [fac],al
+
+print msg2,len2
+print fac,3

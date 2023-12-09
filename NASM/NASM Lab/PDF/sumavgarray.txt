@@ -1,0 +1,48 @@
+%macro print 2
+mov eax,4
+mov ebx,1
+mov ecx,%1
+mov edx,%2
+int 80h
+%endmacro
+
+section .text
+global _start:
+_start:
+
+xor cx,cx
+mov cl,[n]
+xor eax,eax
+xor ebx,ebx
+mov edx,array
+
+label:
+mov bl,[edx]
+add eax,ebx
+inc edx
+loop label
+
+add eax,'0'
+mov [res],al
+print msg1,len1
+print res,2
+print msg,len
+
+mov eax,1
+mov ebx,0
+int 80h
+
+section .data
+msg1: db 'Sum of elements : '
+len1: equ $-msg1
+msg2: db 'Average of elements : '
+len2: equ $-msg2
+msg: db '',0Ah
+len: equ $-msg
+
+array: db 1,2,3,4,5
+n: db 5
+
+section .bss
+res: resb 2
+avg: resb 2
