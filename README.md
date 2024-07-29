@@ -1,4 +1,4 @@
-# s5-NASM-LAB-ktu
+# NASM (Netwide Assembler)
 
 NASM (Netwide Assembler) is an assembler for the x86 and x86-64 architectures. It is used to write programs in assembly language, which is a low-level programming language that provides a way to write instructions that a computer's CPU can execute directly.
 
